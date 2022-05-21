@@ -116,6 +116,19 @@ function researchTab (tab) {
   });
 };
 
+// Run on keybind press
+chrome.commands.onCommand.addListener(function (command) {
+    switch (command) {
+        case 'toggle-mute':
+			assessTabs();
+			sendKeypress();
+			researchTab();
+            break;
+        default:
+            console.log(`Command ${command} not found`);
+    }
+});
+
 
 // Functions to run when icon is clicked.
 chrome.browserAction.onClicked.addListener( function (tab) {
